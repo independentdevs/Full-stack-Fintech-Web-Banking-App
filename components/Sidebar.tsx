@@ -13,8 +13,8 @@ const Sidebar = ({ User }: SiderbarProps) => {
         <Link href="/" className="mb-12 cursor-pointer items-center gap-2">
           <Image
             src="/icons/logo.svg"
-            width={34}
-            height={34}
+            width={35}
+            height={35}
             alt="INDEPENDANT logo"
           />
 
