@@ -5,14 +5,20 @@ import { Link } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { usePathname } from "next/navigation";
-import Footer from "Footer";
-import PlaidLink from "PlaidLink"; 
+import Footer from "@/components/Footer";
+import PlaidLink from "@/components/PlaidLink";
 
-interface SiderbarProps {
-  User: User;
+interface User {
+  firstName: string;
+  lastName: string;
+  email?: string; // Optional
+  userId?: string; // Optional
+  $id?: string; // Optional
+  dwollaCustomerUrl?: string; // Optional
+  // other properties...
 }
 
-const Sidebar = ({ User }: SiderbarProps) => {
+const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname();
   return (
     <section className="sidebar">
@@ -30,9 +36,7 @@ const Sidebar = ({ User }: SiderbarProps) => {
 
         </Link>
 
-        {sidebarLinks.map((item
-
-        => {
+        {sidebarLinks.map((item => {
           const isActive =
           pathname === item.route || pathname.startsWith(`${item.route}/`)
           return (
@@ -62,7 +66,7 @@ const Sidebar = ({ User }: SiderbarProps) => {
             </Link>
           )
         }))}
-        <PlaidLink user={User}/>
+        <PlaidLink user={user}/>
       </nav>
     </section>
   );

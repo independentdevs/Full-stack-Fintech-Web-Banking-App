@@ -1,9 +1,10 @@
 import SIDEBAR from "@/components/Sidebar";
-import { Sidebar } from "lucide-react";
+import { Sidebar as lucideSidebar, SidebarIcon } from "lucide-react";
 import MobileNav from "@/components/MobileNav";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import Sidebar from "@/components/Sidebar";
 
 export default function RootLayout({
   children,
@@ -11,12 +12,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const loggedIn = {firstName:'Masego' , lastName:'Mashigo' };
-  if(!loggedIn) redirect('/sign-in')
+  const loggedIn: User = {
+    firstName: 'Masego',
+    lastName: 'Mashigo',
+    email: 'masego@example.com', // Added email
+    userId: '12345', // Added userId
+    $id: 'abc123', // Added $id
+    dwollaCustomerUrl: 'url',
+    dwollaCustomerId: "",
+    address1: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    dateOfBirth: "",
+    ssn: ""
+  };
+
+  if (!loggedIn) redirect('/sign-in');
+
   return (
     <main className="flex h-screen w-full font-inter">
-        <Sidebar User={loggedIn} />
-        <div className="flex size-full flex-col">
+      <Sidebar user={loggedIn} />
+      <div className="flex size-full flex-col">
         <div className="root-layout">
           <Image src="/icons/logo.svg" width={30} height={30} alt="logo" />
           <div>
@@ -25,7 +42,6 @@ export default function RootLayout({
         </div>
         {children}
       </div>
-        {children}
     </main>
   );
 }
