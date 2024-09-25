@@ -1,4 +1,5 @@
 import HeaderBox from '@/components/HeaderBox';
+import RightSidebar from '@/components/RightSideBar';
 import TotalBalanceBox from '@/components/TotalBalanceBox';
 import React from 'react'
 
@@ -23,7 +24,28 @@ const Dashboard = () => {
                       
                       />
                 </header>
+
+                RECENT TRANSACTIONS
             </div>
+            <RightSidebar user={{
+                $id: '',
+                email: '',
+                userId: '',
+                dwollaCustomerUrl: '',
+                dwollaCustomerId: '',
+                firstName: '',
+                lastName: '',
+                address1: '',
+                city: '',
+                state: '',
+                postalCode: '',
+                dateOfBirth: '',
+                ssn: ''
+            }} transactions={[]} banks={[]}>
+            
+
+            </RightSidebar>
+
         </section>
     )
 }
